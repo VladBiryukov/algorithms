@@ -1,3 +1,4 @@
+
 export function getIndexSmallest<T>(arr: T[]): number {
     let smallest = arr[0];
     let indexSmallest = 0;
@@ -24,3 +25,6 @@ export function getIndexBigLest<T>(arr: T[]): number {
     return indexSmallest;
 }
 
+export function isNull(value: any): boolean {
+    return value === null;
+}
