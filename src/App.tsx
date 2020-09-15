@@ -1,10 +1,13 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { quickSort } from './algorithms/recursion/quickSort';
+import {noSortedArr} from "./algorithms/mocks";
 
 
 
 function App() {
+  console.log(quickSort(noSortedArr))
   return (
     <div className="App">
       <header className="App-header">
