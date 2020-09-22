@@ -3,11 +3,13 @@ import logo from './logo.svg';
 import './App.css';
 import { quickSort } from './algorithms/recursion/quickSort';
 import {noSortedArr} from "./algorithms/mocks";
+import { HashAsObject } from './hash';
 
 
 
 function App() {
-  console.log(quickSort(noSortedArr))
+  const hashPassword = new HashAsObject<number>();
+  console.log(hashPassword);
   return (
     <div className="App">
       <header className="App-header">
