@@ -52,20 +52,20 @@ export const arrayPerson: Person[] = [
 
 export function searchQueueSuperPerson(
    listPerson: Person[],
-   listViewedPersonIds: number[] = []
+   listIdsViewedPersons: number[] = []
 ): Person | null {
   if (!listPerson.length) {
     return null
   }
-  const copyListViewedPersonIds = [...listViewedPersonIds];
+  const copylistIdsViewedPersons = [...listIdsViewedPersons];
   const copyListPerson: Person[] = [...listPerson];
   const firstPerson = copyListPerson[0];
 
-  const isPersonViewed: boolean = listViewedPersonIds.includes(firstPerson.id);
+  const isPersonViewed: boolean = listIdsViewedPersons.includes(firstPerson.id);
 
   if (isPersonViewed) {
     copyListPerson.shift();
-    return searchQueueSuperPerson(copyListPerson, copyListViewedPersonIds);
+    return searchQueueSuperPerson(copyListPerson, copylistIdsViewedPersons);
   }
 
   if (firstPerson.superPerson) {
@@ -74,8 +74,8 @@ export function searchQueueSuperPerson(
     if (firstPerson.friends.length) {
       copyListPerson.push(...firstPerson.friends);
     }
-    copyListViewedPersonIds.push(firstPerson.id);
+    copylistIdsViewedPersons.push(firstPerson.id);
     copyListPerson.shift();
-    return searchQueueSuperPerson(copyListPerson, copyListViewedPersonIds);
+    return searchQueueSuperPerson(copyListPerson, copylistIdsViewedPersons);
   }
 }
