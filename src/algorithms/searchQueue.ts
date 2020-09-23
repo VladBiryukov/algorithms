@@ -49,7 +49,10 @@ export const arrayPerson: Person[] = [
 ]
 
 
-export function searchQueueSuperPerson(listPerson: Person[]): Person {
+export function searchQueueSuperPerson(listPerson: Person[]): Person | null {
+  if (!listPerson.length) {
+    return null
+  }
   const copyListPerson: Person[] = [...listPerson];
   const firstPerson = copyListPerson[0];
   if (firstPerson.superPerson) {
