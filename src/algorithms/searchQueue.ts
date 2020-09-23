@@ -36,8 +36,14 @@ export const arrayPerson: Person[] = [
   ]),
   new Person(5, 'Ваня', [
     new Person(6, 'Настя', [
-      new Person(7, 'Плотва', []),
-      new Person(777, 'Сын маминой подруги', [], VariantPerson.super)
+      new Person(7, 'Плотва', [
+         new Person(8, '', [
+            new Person(9, '' ,[
+              new Person(777, 'Сын маминой подруги', [], VariantPerson.super)
+            ])
+         ])
+      ]),
+
     ])
   ])
 ]
