@@ -1,15 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { quickSort } from './algorithms/recursion/quickSort';
-import {noSortedArr} from "./algorithms/mocks";
-import { HashAsObject } from './hash';
+import { searchQueueSuperPerson, arrayPerson } from './algorithms/searchQueue';
 
 
 
 function App() {
-  const hashPassword = new HashAsObject<number>();
-  console.log(hashPassword);
+  console.log(searchQueueSuperPerson(arrayPerson));
   return (
     <div className="App">
       <header className="App-header">
