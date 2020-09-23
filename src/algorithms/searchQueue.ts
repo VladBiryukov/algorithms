@@ -35,13 +35,14 @@ export const arrayPerson: Person[] = [
     new Person(3, 'Юля'), new Person(4, 'Игорь')
   ]),
   new Person(5, 'Ваня', [
+    new Person(3, 'Юля'), new Person(4, 'Игорь'),
     new Person(6, 'Настя', [
       new Person(7, 'Плотва', [
-         new Person(8, 'Вика', [
-            new Person(9, 'Костя' ,[
-              new Person(777, 'Сын маминой подруги', [], VariantPerson.super)
-            ])
-         ])
+        new Person(8, 'Вика', [
+          new Person(9, 'Костя', [
+            new Person(777, 'Сын маминой подруги', [], VariantPerson.super)
+          ])
+        ])
       ]),
 
     ])
@@ -49,19 +50,32 @@ export const arrayPerson: Person[] = [
 ]
 
 
-export function searchQueueSuperPerson(listPerson: Person[]): Person | null {
+export function searchQueueSuperPerson(
+   listPerson: Person[],
+   listViewedPersonIds: number[] = []
+): Person | null {
   if (!listPerson.length) {
     return null
   }
+  const copyListViewedPersonIds = [...listViewedPersonIds];
   const copyListPerson: Person[] = [...listPerson];
   const firstPerson = copyListPerson[0];
+
+  const isPersonViewed: boolean = listViewedPersonIds.includes(firstPerson.id);
+
+  if (isPersonViewed) {
+    copyListPerson.shift();
+    return searchQueueSuperPerson(copyListPerson, copyListViewedPersonIds);
+  }
+
   if (firstPerson.superPerson) {
     return firstPerson;
   } else {
     if (firstPerson.friends.length) {
       copyListPerson.push(...firstPerson.friends);
     }
+    copyListViewedPersonIds.push(firstPerson.id);
     copyListPerson.shift();
-    return searchQueueSuperPerson(copyListPerson);
+    return searchQueueSuperPerson(copyListPerson, copyListViewedPersonIds);
   }
 }
