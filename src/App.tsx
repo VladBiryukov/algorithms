@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { searchQueueSuperPerson, arrayPerson } from './algorithms/searchQueue';
+import { searchDijkstra, someGraph } from './algorithms/searchDijkstra';
 
 
 
 function App() {
-  console.log(searchQueueSuperPerson(arrayPerson));
+  searchDijkstra(someGraph);
   return (
     <div className="App">
       <header className="App-header">

@@ -1,6 +1,6 @@
 export enum VariantPerson {
   common = 'common',
-  super = 'super',
+  superMan = 'superMan',
 }
 
 class Person {
@@ -21,7 +21,7 @@ class Person {
   }
 
   get superPerson(): boolean {
-    return this.hasVariant(VariantPerson.super);
+    return this.hasVariant(VariantPerson.superMan);
   }
 
   get commonPerson(): boolean {
@@ -40,7 +40,7 @@ export const arrayPerson: Person[] = [
       new Person(7, 'Плотва', [
         new Person(8, 'Вика', [
           new Person(9, 'Костя', [
-            new Person(777, 'Сын маминой подруги', [], VariantPerson.super)
+            new Person(777, 'Сын маминой подруги', [], VariantPerson.superMan)
           ])
         ])
       ]),
@@ -51,13 +51,13 @@ export const arrayPerson: Person[] = [
 
 
 export function searchQueueSuperPerson(
-   listPerson: Person[],
-   listIdsViewedPersons: number[] = []
+  listPerson: Person[],
+  listIdsViewedPersons: number[] = []
 ): Person | null {
   if (!listPerson.length) {
     return null
   }
-  const copylistIdsViewedPersons = [...listIdsViewedPersons];
+  const copyListIdsViewedPersons = [...listIdsViewedPersons];
   const copyListPerson: Person[] = [...listPerson];
   const firstPerson = copyListPerson[0];
 
@@ -65,7 +65,7 @@ export function searchQueueSuperPerson(
 
   if (isPersonViewed) {
     copyListPerson.shift();
-    return searchQueueSuperPerson(copyListPerson, copylistIdsViewedPersons);
+    return searchQueueSuperPerson(copyListPerson, copyListIdsViewedPersons);
   }
 
   if (firstPerson.superPerson) {
@@ -74,8 +74,8 @@ export function searchQueueSuperPerson(
     if (firstPerson.friends.length) {
       copyListPerson.push(...firstPerson.friends);
     }
-    copylistIdsViewedPersons.push(firstPerson.id);
+    copyListIdsViewedPersons.push(firstPerson.id);
     copyListPerson.shift();
-    return searchQueueSuperPerson(copyListPerson, copylistIdsViewedPersons);
+    return searchQueueSuperPerson(copyListPerson, copyListIdsViewedPersons);
   }
 }
