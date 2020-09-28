@@ -1,12 +1,12 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { searchDijkstra, someGraph } from './algorithms/searchDijkstra';
+import { searchDijkstra, } from './algorithms/searchDijkstra';
 
 
 
 function App() {
-  searchDijkstra(someGraph);
+  searchDijkstra();
   return (
     <div className="App">
       <header className="App-header">
